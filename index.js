@@ -10,6 +10,10 @@ let carrito = {}
 
 document.addEventListener("DOMContentLoaded",()=>{
     products()
+    if(localStorage.getItem("carrito")){
+        carrito  = JSON.parse(localStorage.getItem("carrito"))
+    }
+    pintarCarrito()
 })
 
 items.addEventListener("click",e =>{
@@ -68,6 +72,7 @@ const setCarrito = (objeto) =>{
    carrito[producto.id] ={
     ...producto
    }
+   localStorage.setItem("carrito",JSON.stringify(carrito))
    pintarCarrito()
    
 }
@@ -109,6 +114,7 @@ const pintarFooter = () =>{
 const deleteCarrito = (e) =>{
     if(e.target.tagName =="BUTTON"){
        carrito = {}
+       localStorage.setItem("carrito",JSON.stringify(carrito))
        pintarCarrito()
        pintarFooter()
        footer.innerHTML='<th scope="row" colspan="5">Carrito vacío - comience a comprar!</th>'
@@ -121,6 +127,7 @@ const cantidad = (e) =>{
         const producto = carrito[e.target.dataset.id]
         producto.cantidad = carrito[e.target.dataset.id].cantidad + 1
         carrito[e.target.dataset.id] = producto
+        localStorage.setItem("carrito",JSON.stringify(carrito))
         pintarCarrito()
         pintarFooter()
     }
@@ -128,8 +135,10 @@ const cantidad = (e) =>{
         const producto = carrito[e.target.dataset.id]
         producto.cantidad = carrito[e.target.dataset.id].cantidad - 1
         carrito[e.target.dataset.id] = producto
+        localStorage.setItem("carrito",JSON.stringify(carrito))
         if(producto.cantidad == 0){
             delete carrito[e.target.dataset.id]
+            localStorage.setItem("carrito",JSON.stringify(carrito))
         }
         pintarCarrito()
         pintarFooter()
