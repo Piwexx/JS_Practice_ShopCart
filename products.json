@@ -1,0 +1,26 @@
+[
+    {
+        "precio":900,
+        "id":1,
+        "title":"Cafe",
+        "img":"images/coffe.jpg"
+    },
+    {
+        "precio":800,
+        "id":2,
+        "title":"Cafe",
+        "img":"images/coffe.jpg"
+    },
+    {
+        "precio":700,
+        "id":3,
+        "title":"Cafe",
+        "img":"images/coffe.jpg"
+    },
+    {
+        "precio":600,
+        "id":4,
+        "title":"Cafe",
+        "img":"images/coffe.jpg"
+    }
+]
